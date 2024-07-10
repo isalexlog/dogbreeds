@@ -1,0 +1,28 @@
+<div>
+    <p-table [value]="page.content" [tableStyle]="{ 'min-width': '10rem' }" selectionMode="single">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Dog breeds</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-breed>
+            <tr>
+                <td (click)="onBreedClick(breed.breed)">{{ breed.breed }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <p-paginator
+        (onPageChange)="onPageChange($event)"
+        [first]="first"
+        [rows]="rows"
+        [totalRecords]="page.totalElements"
+        [rowsPerPageOptions]="[10, 20, 30]"
+    />
+
+    @if (selectedBreedName) {
+        <app-breed-detail [breedName]="selectedBreedName"/>
+    }
+</div>
+
+

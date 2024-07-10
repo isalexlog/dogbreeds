@@ -1,0 +1,28 @@
+<div class="flex mt-3">
+    <p-panel header="Breed Details">
+        @if (breed) {
+            <div><b>Breed name</b>: {{ breed.breed }}</div>
+
+            <div class="mt-2">
+                @if (breed.subBreeds.length) {
+                    <p-table [value]="breed.subBreeds" [tableStyle]="{ 'min-width': '10rem' }">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th>Subbreeds</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-subBreed>
+                            <tr>
+                                <td>{{ subBreed }}</td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                } @else {
+                    <div>No more details available</div>
+                }
+            </div>
+        }
+    </p-panel>
+</div>
+
+

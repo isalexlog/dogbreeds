@@ -1,0 +1,28 @@
+<div class="layout-topbar">
+    <a class="layout-topbar-logo" routerLink="">
+        <span>Dog breeds</span>
+    </a>
+
+    <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
+        <i class="pi pi-bars"></i>
+    </button>
+
+    <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button" (click)="layoutService.showProfileSidebar()">
+        <i class="pi pi-ellipsis-v"></i>
+    </button>
+
+    <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
+        <div *ngIf="isLoggedIn$ | async; else loggedOut">
+            <button class="p-link layout-topbar-button" (click)="signOut()">
+                <i class="pi pi-sign-out" pTooltip="Sign out" tooltipPosition="left"></i>
+                <span>Sign out</span>
+            </button>
+        </div>
+        <ng-template #loggedOut>
+            <button class="p-link layout-topbar-button" (click)="signIn()">
+                <i class="pi pi-sign-in" pTooltip="Sign in" tooltipPosition="left"></i>
+                <span>Sign in</span>
+            </button>
+        </ng-template>
+    </div>
+</div>

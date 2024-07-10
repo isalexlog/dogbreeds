@@ -1,0 +1,21 @@
+<p-panel header="Analytics">
+    @if (analytics.length) {
+
+        <div class="mt-2">
+                <p-table [value]="analytics" [tableStyle]="{ 'min-width': '10rem' }">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Breed Name</th>
+                            <th>Number of requests</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-analyticsRecord>
+                        <tr>
+                            <td>{{ analyticsRecord.breedName }}</td>
+                            <td>{{ analyticsRecord.numberOfRequests }}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+        </div>
+    }
+</p-panel>
